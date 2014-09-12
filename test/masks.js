@@ -23,6 +23,18 @@ describe('mask', function() {
 		Masquerade.match({ a: Number, b: String }, { a: 1, b: 2 }).should.be.false;
 	});
 
+	it('should use undefined for all missing values', function() {
+		Masquerade.match([String, undefined], ["test"]).should.be.true;
+
+		var optional = function(type) {
+			return new Masquerade(function(value) {
+				return value === undefined || Masquerade.match([type], [value]);
+			});
+		};
+
+		Masquerade.match([String, optional(String), optional(String)], ["test", "test"]).should.be.true;
+	});
+
 	describe('types', function() {
 		it('should support Strings', function() {
 			Masquerade.match(String, "str").should.be.true;
