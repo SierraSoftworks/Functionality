@@ -13,6 +13,18 @@ describe('functionality', function() {
 		f().should.eql(1);
 	});
 
+	it.only('should support using retry()', function() {
+		var f = fn.on(fn.not(String), function(o) {
+			this.args[0] = JSON.stringify(o);
+			return this.retry();
+		}).on(String, function(s) {
+			return s;
+		}).compile();
+
+		f('s').should.equal('s');
+		f(1).should.equal('1');
+	});
+
 	describe('helpers', function() {
 		describe('opt', function() {
 			it('should work as advertized with a single arguments', function() {
