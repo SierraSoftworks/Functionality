@@ -1,0 +1,35 @@
+{
+  "name": "functionality",
+  "version": "1.0.0",
+  "description": "Simple function overloading for JavaScript",
+  "author": "Sierra Softworks",
+  "license": "MIT",
+  "homepage": "https://github.com/SierraSoftworks/Functionality",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SierraSoftworks/Functionality.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SierraSoftworks/Functionality/issues"
+  },
+  "keywords": [
+    "overload",
+    "overloading",
+    "method",
+    "function"
+  ],
+
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+
+  "dependencies": {
+    "lodash": "*"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
+}
