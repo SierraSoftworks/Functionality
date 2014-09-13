@@ -13,7 +13,7 @@ describe('functionality', function() {
 		f().should.eql(1);
 	});
 
-	it.only('should support using retry()', function() {
+	it('should support using retry()', function() {
 		var f = fn.on(fn.not(String), function(o) {
 			this.args[0] = JSON.stringify(o);
 			return this.retry();
