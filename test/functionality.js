@@ -27,7 +27,7 @@ describe('functionality', function() {
 
 	describe('helpers', function() {
 		describe('opt', function() {
-			it('should work as advertized with a single arguments', function() {
+			it('should work as advertized with a single argument', function() {
 				var f = fn.on(fn.opt(Number), function(n) {
 					return n === undefined || n == 1;
 				}).compile();
@@ -50,7 +50,7 @@ describe('functionality', function() {
 		});
 
 		describe('gobble', function() {
-			it('should work as advertized with a single arguments', function() {
+			it('should work as advertized with a single argument', function() {
 				var f = fn.on(fn.gobble(), function(n) {
 					return true;
 				}).or(function() {
@@ -76,7 +76,7 @@ describe('functionality', function() {
 		});
 
 		describe('not', function() {
-			it('should work as advertized with a single arguments', function() {
+			it('should work as advertized with a single argument', function() {
 				var f = fn.on(fn.not(Number), function(n) {
 					return true;
 				}).or(function(n) {
