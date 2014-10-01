@@ -112,6 +112,18 @@ describe('mask', function() {
 			Masquerade.match(Boolean, true).should.be.true;
 			Masquerade.match(Boolean, { a: 1 }).should.be.false;
 		});
+
+		it('should support RegExp masks', function() {
+			Masquerade.match(/^str$/, "str").should.be.true;
+			Masquerade.match(/^str$/, "astr").should.be.false;
+			Masquerade.match(/^str$/, 1).should.be.false;
+			Masquerade.match(/^str$/, new Date()).should.be.false;
+			Masquerade.match(/^str$/, /regex/).should.be.false;
+			Masquerade.match(/^str$/, []).should.be.false;
+			Masquerade.match(/^str$/, {}).should.be.false;
+			Masquerade.match(/^str$/, true).should.be.false;
+			Masquerade.match(/^str$/, { a: 1 }).should.be.false;
+		});
 	});
 
 	describe('custom handlers', function() {
