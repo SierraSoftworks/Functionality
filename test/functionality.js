@@ -47,6 +47,19 @@ describe('functionality', function() {
 				f('s', 1).should.be.true;
 				f('s', 10).should.be.false;
 			});
+
+			it('should not match arguments of a different type', function() {
+				var f = fn.on(fn.opt(Number), function() {
+					return false;
+				}).or(function() {
+					return true;
+				}).compile();
+
+				f().should.be.false;
+				f(1).should.be.false;
+				f(10).should.be.false;
+				f('10').should.be.true;
+			});
 		});
 
 		describe('gobble', function() {
