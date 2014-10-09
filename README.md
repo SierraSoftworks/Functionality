@@ -175,7 +175,7 @@ function replace(format, placeholders) {
 }
 ```
 
-### fn.mask(handler)
+### fn.mask(name, handler)
 **Creates a new mask option for use in your functions**
 
 This method lets you create your own selection logic for a function's arguments, you should provide a function of the form `function(value) {}` or `function(value, next)` if you want
@@ -183,15 +183,15 @@ control over when the function yields control to the next validator. Your functi
 need to remember to return the result of that too.
 
 ```javascript
-var between1and10 = fn.mask(function(value) {
+var between1and10 = fn.mask("Between1And10", function(value) {
 	return typeof value == 'number' && value > 1 && value < 10;
 });
 
-var isEmpty = fn.mask(function(value, next) {
+var isEmpty = fn.mask("isEmpty", function(value, next) {
 	return typeof value == 'string' && !value.length && next();
 })
 
-var startsWith1 = fn.mask(function(value, next) {
+var startsWith1 = fn.mask("Starts With",  function(value, next) {
 	return value === 1;
 });
 ```

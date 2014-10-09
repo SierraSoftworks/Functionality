@@ -27,7 +27,7 @@ describe('mask', function() {
 		Masquerade.match([String, undefined], ["test"]).should.be.true;
 
 		var optional = function(type) {
-			return new Masquerade(function(value) {
+			return new Masquerade("optional", function(value) {
 				return value === undefined || Masquerade.match([type], [value]);
 			});
 		};
@@ -128,7 +128,7 @@ describe('mask', function() {
 
 	describe('custom handlers', function() {
 		it('should work correctly with basic validators', function() {
-			var validator = new Masquerade(function(value) {
+			var validator = new Masquerade("between 10 and 100", function(value) {
 				return typeof value == 'number' && value >= 10 && value <= 100;
 			});
 
@@ -139,8 +139,8 @@ describe('mask', function() {
 		});
 
 		it('should work correctly with greedy validators', function() {
-			var gobble = new Masquerade(function(value, next) {
-				return true;
+			var gobble = new Masquerade("gobble", function(value, next) {
+				return next(true);
 			});
 
 			Masquerade.match([String, gobble], ["test"]).should.be.true;

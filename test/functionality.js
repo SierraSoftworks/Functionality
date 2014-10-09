@@ -15,14 +15,14 @@ describe('functionality', function() {
 
 	it('should support using retry()', function() {
 		var f = fn.on(fn.not(String), function(o) {
-			this.args[0] = JSON.stringify(o);
-			return this.retry();
+			return this.retry(JSON.stringify(o));
 		}).on(String, function(s) {
 			return s;
 		}).compile();
 
 		f('s').should.equal('s');
 		f(1).should.equal('1');
+		f({ a: 1 }).should.equal('{"a":1}');
 	});
 
 	describe('helpers', function() {
